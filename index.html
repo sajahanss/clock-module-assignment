@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #018DED;
+        }
+        .clock{
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 20px solid white;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 0 4px rgba(0,0,0,0.1);
+        }
+
+        
+        .hr{
+            
+            height: 110px;
+            width: 7px;
+            background-color: black;
+            position: absolute;
+            left: 51.2%;
+            bottom: 47.5%;
+            transform-origin: bottom;
+        }
+        .min{
+            
+            height: 110px;
+            width: 6px;
+            background-color: black;
+            position: absolute;
+            left: 51.2%;
+            bottom: 47.5%;
+            transform-origin: bottom;
+        }
+        .sec{
+            
+            height: 110px;
+            width: 5px;
+            background-color: black;
+            position: absolute;
+            left: 51.2%;
+            bottom: 47.5%;
+            transform: rotate(30deg);
+            transform-origin: bottom;
+            
+        }
+
+        .num{
+            
+            transform: rotate(calc(30deg * var(--n)));
+            position: absolute;
+            text-align: center;
+            inset: 5px;
+        }
+        .num b{
+            transform: rotate(calc(-30deg * var(--n)));
+            display: inline-block;
+        }
+    </style>                                                
+</head>
+<body>
+    <div class="clock">
+        
+    </div>
+    <div class="hr" id="hr_hnd"></div>
+    <div class="min" id="min_hnd"></div>
+    <div class="sec" id="sec_hnd"></div>
+
+    <script>
+       
+       setInterval(
+       function clock()
+        {
+        var sec=0, min=0, hr=0;
+        const d=new Date();
+        sec=d.getSeconds() *6;
+        min=d.getMinutes()*6 +(sec/60) ;
+        hr=d.getHours()*30 +(min/12) ;
+        document.getElementById("hr_hnd").style.transform="rotate(" + hr +"deg)";
+        document.getElementById("min_hnd").style.transform="rotate(" + min +"deg)";
+        document.getElementById("sec_hnd").style.transform="rotate(" + sec +"deg)";
+
+    },1000);
+   
+    </script>
+
+</body>
+</html>
